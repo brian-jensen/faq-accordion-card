@@ -43,7 +43,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 147px 24px 85px;
-  max-width: 920px;
+  max-width: 57.5rem;
   margin: 0 auto;
   min-height: 100vh;
 }
@@ -66,26 +66,34 @@ body {
   width: 237px;
 }
 
+.box {
+  display: none;
+}
+
 h1 {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 38px;
+  margin-bottom: 30px;
 }
 
 details {
   position: relative;
-  border-bottom: 1px solid #E8E8EA;
-  margin-top: 19.5px;
-  padding-bottom: 19.5px;
+  border-bottom: 1px solid hsl(240, 4.5%, 91.4%);
+  padding-bottom: 19px;
 }
 
-details > summary {
+details+details {
+  margin-top: 19px;
+}
+
+details>summary {
   list-style: none;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 @media (hover: hover) {
-  details > summary:hover {
+  details>summary:hover {
     color: hsl(14, 88%, 65%);
   }
 }
@@ -94,35 +102,111 @@ summary::-webkit-details-marker {
   display: none;
 }
 
-summary, details p {
-  font-size: 13px;
-  line-height: 16px;
-  color: #4B4C5F;
+summary {
+  font-size: 0.8125rem;
+  line-height: 1rem;
+  color: hsl(237, 11.8%, 33.3%);
 }
 
 details p {
-  margin-top: 12px;
+  margin-top: 11px;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  color: hsl(240, 5.9%, 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  details[open] summary~* {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  details[open] summary~* {
+    animation: slideDown 0.5s ease-in-out forwards;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-11px)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
 }
 
 details[open]>summary {
   font-weight: 700;
-  color: #1E1F36;
+  color: hsl(237.5, 28.6%, 16.5%);
 }
 
 details summary::after {
-  content: '';
-  border-style: solid;
-  border-width: 2px 2px 0 0;
-  height: 4px;
-  width: 4px;
+  content: url(../images/icon-arrow-down.svg);
   position: absolute;
-  transform: rotate(135deg);
+  top: 0;
   right: 0;
-  top: 4px;
-  color: hsl(14, 88%, 65%);
 }
 
 details[open] summary::after {
-  top: 6px;
-  transform: rotate(-45deg);
+  transform: rotate(180deg);
+}
+
+@media (min-width: 64em) {
+  
+  .woman-mobile {
+    display: none;
+  }
+
+  .box {
+    display: inline;
+  }
+
+  .wrapper {
+    width: 57.5rem;
+    padding: 0;
+  }
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    min-height: 31.8125rem;
+    padding: 60px 95px 80px 0;
+    background: hsl(0, 0%, 100%) url(../images/bg-pattern-desktop.svg) no-repeat bottom 31% left -576px;
+  }
+
+  .backgrounds {
+    flex-basis: 24.375rem;
+  }
+
+  .card section {
+    flex-basis: 21.875rem;
+  }
+
+  .backgrounds {
+    background: url(../images/illustration-woman-online-desktop.svg) no-repeat top 50% left -84px;
+  }
+
+  .box {
+    position: relative;
+    top: 38.5%;
+    left: -95px;
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  summary {
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+  }
+
+  details summary::after {
+    right: 15px;
+  }
+
 }
