@@ -8,7 +8,10 @@
   padding: 0;
 }
 
-input, select, textarea, button {
+input,
+select,
+textarea,
+button {
   border: none;
   box-shadow: none;
   outline: none;
@@ -25,26 +28,101 @@ a:active {
   color: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 body {
   font-family: var(--font-primary);
+  background: linear-gradient(180deg, hsl(273.5, 74.6%, 66.1%) 0%, hsl(240.5, 73.3%, 64.7%) 100%);
 }
 
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 147px 24px 85px;
+  max-width: 920px;
+  margin: 0 auto;
   min-height: 100vh;
-  background: linear-gradient(180deg, hsl(273.5, 74.6%, 66.1%) 0%, hsl(240.5, 73.3%, 64.7%) 100%);
 }
 
 .card {
-  width: 327px;
+  position: relative;
+  width: 100%;
   padding: 132px 24px 48px 24px;
-  background: hsl(0, 0%, 100%);
   box-shadow: 0px 50px 50px -20px hsla(260.2, 74.3%, 27.5%, 0.5);
   border-radius: 23px;
+  background: hsl(0, 0%, 100%) url(../images/bg-pattern-mobile.svg) no-repeat top center;
+}
+
+.woman-mobile {
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 180px;
+  width: 237px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 38px;
+}
+
+details {
+  position: relative;
+  border-bottom: 1px solid #E8E8EA;
+  margin-top: 19.5px;
+  padding-bottom: 19.5px;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  details > summary:hover {
+    color: hsl(14, 88%, 65%);
+  }
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary, details p {
+  font-size: 13px;
+  line-height: 16px;
+  color: #4B4C5F;
+}
+
+details p {
+  margin-top: 12px;
+}
+
+details[open]>summary {
+  font-weight: 700;
+  color: #1E1F36;
+}
+
+details summary::after {
+  content: '';
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  height: 4px;
+  width: 4px;
+  position: absolute;
+  transform: rotate(135deg);
+  right: 0;
+  top: 4px;
+  color: hsl(14, 88%, 65%);
+}
+
+details[open] summary::after {
+  top: 6px;
+  transform: rotate(-45deg);
 }
